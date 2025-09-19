@@ -1,13 +1,14 @@
 ﻿using MidiTcpServer;
 
 var midi = new MidiHandler();
-var server = new TcpServer();
-var boradcast = new ClientBroadcaster(server.Clients);
+var wsBridge = new WebSocketServerBridge();
 
-midi.OnMidiMessage += boradcast.Broadcast;
+//var server = new TcpServer();
+//var boradcast = new ClientBroadcaster(server.Clients);
 
+midi.OnMidiMessage += wsBridge.Broadcast;
 
-server.Start();
+wsBridge.Start();
 midi.Start();
 
 Console.ReadLine();

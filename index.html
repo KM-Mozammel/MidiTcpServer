@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MIDI Viewer</title>
+</head>
+<body>
+    <h1>MIDI Input</h1>
+    <pre id="output"></pre>
+
+    <script>
+    const output = document.getElementById("output");
+        const socket = new WebSocket("ws://192.168.0.196:8181");
+
+    socket.onmessage = (event) => {
+      output.textContent += event.data + "\n";
+    };
+    </script>
+</body>
+</html>
